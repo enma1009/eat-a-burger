@@ -1,0 +1,1 @@
+CREATE DATABASE burger_logger;

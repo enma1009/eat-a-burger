@@ -1,0 +1,26 @@
+{
+  "name": "eat-a-burger",
+  "version": "1.0.0",
+  "description": "Simple logger that uses MySQL, Node, Express & Handlebars.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enma1009/eat-a-burger.git"
+  },
+  "author": "Enid Soto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enma1009/eat-a-burger/issues"
+  },
+  "homepage": "https://github.com/enma1009/eat-a-burger#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.5"
+  }
+}

@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-md-2 offset-md-5 mt-3 mb-3">
+            <img src="assets/images/burger_logo.png" class="mx-auto d-block" alt="Eat-a-burger logo" width="100%">
+        </div>
+        <div class="col-xs-4 col-md-4 offset-md-4 mb-3">
+            <img src="assets/images/eat-da-burger.png" class="mx-auto d-block" alt="Eat-a-burger title" width="100%">
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Enter the name of a burger you want to eat" aria-label="Enter the name of a burger you want to eat" aria-describedby="button-addon2" id="burger_input">
+        <div class="input-group-append">
+            <button class="btn btn-danger" type="button" id="submit_burger">Submit</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Burgers to Eat</h5>
+                <p class="card-text font-weight-light">Submit your burgers at the top and they will be added here!</p>
+                <ul class="list-group" id="burgersToEat">
+                    <li class="list-group-item">Cras justo odio <button class="btn btn-outline-danger btn-sm float-right">Eat me!</button></li>
+                    <li class="list-group-item">Dapibus ac facilisis in <a href="#" class="btn btn-outline-danger btn-sm float-right">Eat me!</a></li>
+                    <li class="list-group-item">Morbi leo risus <a href="#" class="btn btn-outline-danger btn-sm float-right">Eat me!</a></li>
+                    <li class="list-group-item">Porta ac consectetur ac <a href="#" class="btn btn-outline-danger btn-sm float-right">Eat me!</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card text-white bg-danger">
+            <div class="card-body">
+                <h5 class="card-title">Devoured Burgers</h5>
+                <p class="card-text font-weight-light">These are all the burgers you have eaten.</p>
+                <ul class="list-group text-muted">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#submit_burger").on("click", function(event) {
+    event.preventDefault();
+    let newBurger = {
+      name: $("#burger_input").val().trim()
+    };
+    console.log(newBurger);
+    $.ajax("/api/burgers", {
+      type: "POST",
+      data: newBurger
+    }).then(
+      function(response) {
+          $("#burgersToEat").append(`<li class="list-group-item">${response.name}<button class="btn btn-outline-danger btn-sm float-right">Eat me!</button></li>`);
+        console.log("Added new burger!");
+        location.reload();
+            }
+        );
+    });
+</script>
