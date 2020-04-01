@@ -17,51 +17,34 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Burgers to Eat</h5>
-                <p class="card-text font-weight-light">Submit your burgers at the top and they will be added here!</p>
-                <ul class="list-group" id="burgersToEat">
-                    <li class="list-group-item">Cras justo odio <button class="btn btn-outline-danger btn-sm float-right">Eat me!</button></li>
-                    <li class="list-group-item">Dapibus ac facilisis in <a href="#" class="btn btn-outline-danger btn-sm float-right">Eat me!</a></li>
-                    <li class="list-group-item">Morbi leo risus <a href="#" class="btn btn-outline-danger btn-sm float-right">Eat me!</a></li>
-                    <li class="list-group-item">Porta ac consectetur ac <a href="#" class="btn btn-outline-danger btn-sm float-right">Eat me!</a></li>
-                </ul>
-            </div>
+                <div class="card-body">
+                    <h5 class="card-title">Burgers to Eat</h5>
+                    <p class="card-text font-weight-light">All the burgers you submit at the top are added here!</p>
+                    <ul class="list-group" id="burgersToEat">
+                        {{#each burger}}
+                            {{#unless this.dataValues.devoured}}
+                                <li class="list-group-item" id="{{this.dataValues.id}}">{{this.dataValues.name}}<button class="btn btn-outline-danger btn-sm float-right devourBurger" index="{{this.dataValues.id}}">Eat me!</button></li>
+                            {{/unless}}
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="card text-white bg-danger">
-            <div class="card-body">
-                <h5 class="card-title">Devoured Burgers</h5>
-                <p class="card-text font-weight-light">These are all the burgers you have eaten.</p>
-                <ul class="list-group text-muted">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                </ul>
-            </div>
+                <div class="card-body">
+                    <h5 class="card-title">Devoured Burgers</h5>
+                    <p class="card-text font-weight-light">Here go all the burgers you have eaten.</p>
+                    <ul class="list-group text-muted">
+                        {{#each burger}}
+                            {{#if this.dataValues.devoured}}
+                                <li class="list-group-item">{{this.dataValues.name}}</li>
+                            {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<script type="text/javascript">
-    $("#submit_burger").on("click", function(event) {
-    event.preventDefault();
-    let newBurger = {
-      name: $("#burger_input").val().trim()
-    };
-    console.log(newBurger);
-    $.ajax("/api/burgers", {
-      type: "POST",
-      data: newBurger
-    }).then(
-      function(response) {
-          $("#burgersToEat").append(`<li class="list-group-item">${response.name}<button class="btn btn-outline-danger btn-sm float-right">Eat me!</button></li>`);
-        console.log("Added new burger!");
-        location.reload();
-            }
-        );
-    });
-</script>
