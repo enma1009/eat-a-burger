@@ -1,21 +1,21 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-4 col-md-2 offset-md-5 mt-3 mb-3">
-            <img src="assets/images/burger_logo.png" class="mx-auto d-block" alt="Eat-a-burger logo" width="100%">
+        <div class="col-6 offset-3 col-md-2 offset-md-5 mt-3 mb-3">
+            <img src="assets/images/burger_logo.png" alt="Eat-a-burger logo" width="100%">
         </div>
         <div class="col-xs-4 col-md-4 offset-md-4 mb-3">
-            <img src="assets/images/eat-da-burger.png" class="mx-auto d-block" alt="Eat-a-burger title" width="100%">
+            <img src="assets/images/eat-da-burger.png" alt="Eat-a-burger title" width="100%">
         </div>
     </div>
-
+    <p class="lead text-center">Write the name of a burger you want to eat in the box below, and press submit to add it to your list.</p>
     <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Enter the name of a burger you want to eat" aria-label="Enter the name of a burger you want to eat" aria-describedby="button-addon2" id="burger_input">
+        <input type="text" class="form-control" placeholder="Burger name" aria-label="Burger name" aria-describedby="button-addon2" id="burger_input">
         <div class="input-group-append">
             <button class="btn btn-danger" type="button" id="submit_burger">Submit</button>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 mb-2">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Burgers to Eat</h5>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 mb-2">
             <div class="card text-white bg-danger">
                 <div class="card-body">
                     <h5 class="card-title">Devoured Burgers</h5>
@@ -46,5 +46,13 @@
             </div>
         </div>
     </div>
+    <footer class="mt-4">
+        <div class="row">
+            <div class="col-6 offset-3 col-sm-2 offset-sm-5 mb-3">
+                <img src="assets/images/thank-you.png" alt="Thank you!" width="100%">
+            </div>
+        </div>
+        <p class="text-center text-danger small text-uppercase">Project developed by Enid Soto. Built with node.js, handlebars &amp; sequelize.</p>
+    </footer>
 </div>
 
