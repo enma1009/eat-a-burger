@@ -24,4 +24,4 @@ The back-end was built with Node.js and Express. For the data: Sequelize, mySQL2
 
 ## Link to the deployed application
 
-You can find the deployed application [here]()
+You can find the deployed application [here](https://rhubarb-custard-87535.herokuapp.com/)
